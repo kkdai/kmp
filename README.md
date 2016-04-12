@@ -4,9 +4,7 @@ KMP
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/kkdai/trigram/master/LICENSE)  [![GoDoc](https://godoc.org/github.com/kkdai/kmp?status.svg)](https://godoc.org/github.com/kkdai/kmp)  [![Build Status](https://travis-ci.org/kkdai/kmp.svg?branch=master)](https://travis-ci.org/kkdai/kmp)
 
 
-This is a KMP implement and related string function `Strstr` and `Strchr` which using `KMP` feature inside.
-
-
+This is a KMP(Knuth–Morris–Pratt algorithm) implement and related string function `Strstr` and `Strchr` which using `KMP` feature inside.
  
 Install
 ---------------
