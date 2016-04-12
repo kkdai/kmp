@@ -18,7 +18,10 @@
 
 package kmp
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestPreKMP(t *testing.T) {
 	ret := preKMP("cocacola")
@@ -58,4 +61,10 @@ func TestStrchr(t *testing.T) {
 	if index := Strchr("hellow world", "w"); index != 7 {
 		t.Error("wrong on 1st Strchr test:", index)
 	}
+
+	fmt.Println(KMP("CDAB", "ABC ABCDAB ABCDABCDABDE"))
+	if index := Strchr("ABC ABCDAB ABCDABCDABDE", "CDAB"); index != 17 {
+		t.Error("wring on 2nd Strchr test:", index)
+	}
+
 }
