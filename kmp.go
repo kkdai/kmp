@@ -23,6 +23,17 @@ const (
 	MaxArraySize int = 100
 )
 
+//strrchr: Returns a pointer to the last occurrence of string in the  string str
+func Strchr(target string, need string) int {
+	retSlice := KMP(need, target)
+	if len(retSlice) > 0 {
+		return retSlice[len(retSlice)-1]
+	}
+
+	return -1
+
+}
+
 //Strstr :Use kmp for strstr function
 func Strstr(target string, need string) int {
 	retSlice := KMP(need, target)

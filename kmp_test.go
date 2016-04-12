@@ -53,3 +53,9 @@ func TestStrstr(t *testing.T) {
 		t.Error("wring on 2nd Strstr test:", index)
 	}
 }
+
+func TestStrchr(t *testing.T) {
+	if index := Strchr("hellow world", "w"); index != 7 {
+		t.Error("wrong on 1st Strchr test:", index)
+	}
+}
