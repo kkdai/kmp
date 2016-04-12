@@ -4,6 +4,8 @@ KMP
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/kkdai/trigram/master/LICENSE)  [![GoDoc](https://godoc.org/github.com/kkdai/kmp?status.svg)](https://godoc.org/github.com/kkdai/kmp)  [![Build Status](https://travis-ci.org/kkdai/kmp.svg?branch=master)](https://travis-ci.org/kkdai/kmp)
 
 
+This is a KMP implement and related string function `Strstr` and `Strchr` which using `KMP` feature inside.
+
 
  
 Install
@@ -15,18 +17,30 @@ Usage
 ---------------
 
 ```go
+package main
 
+import (
+	"fmt"
+	
+	"github.com/kkdai/kmp"
+)
 
+func main() {
+	
+	//Using KMP
+	fmt.Println(KMP("co", "cocacola"))
+	//0, 4
+	
+	//Using Strstr
+	fmt.Println(Strstr("cocacola", "co"))
+	//0
+	
+	//Using Strchr
+	fmt.Println(Strstr("cocacola", "co"))
+	//4
+}	
 ```
 
-
-Benchmark
----------------
-
-Still working to improve the query time.
-
-```
-```
 
 Inspired
 ---------------
