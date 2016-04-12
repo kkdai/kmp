@@ -33,8 +33,10 @@ Inspired
 
 - [Knuth-Morris-Pratt algorithm](http://www-igm.univ-mlv.fr/~lecroq/string/node8.html)
 - [理解KMP算法](http://zhangbuhuai.com/2015/07/06/KMP/)
+- [String Matching: 各種演算法介紹](http://www.csie.ntnu.edu.tw/~u91029/StringMatching.html)
 - [youtube: Tutorial: The Knuth-Morris-Pratt (KMP) String Matching Algorithm](https://www.youtube.com/watch?v=2ogqPWJSftE)
 - [youtube: Knuth–Morris–Pratt(KMP) Pattern Matching(Substring search)](https://www.youtube.com/watch?v=GTJr8OvyEVQ)
+- [Regular Expression Matching with a Trigram Index](https://swtch.com/~rsc/regexp/regexp4.html)
 
 Project52
 ---------------

@@ -18,13 +18,24 @@
 
 package kmp
 
-import (
-	"fmt"
+const (
+	//MaxArraySize Need modify this value if your pattern is much learger than 100
+	MaxArraySize int = 100
 )
 
+//Strstr :Use kmp for strstr function
+func Strstr(target string, need string) int {
+	retSlice := KMP(need, target)
+	if len(retSlice) > 0 {
+		return retSlice[0]
+	}
+
+	return -1
+}
+
 //KMP Return index list if str1 contain str2
-func kmp(str1 string, str2 string) []int {
-	next := preKMP([]byte(str1))
+func KMP(str1 string, str2 string) []int {
+	next := preKMP(str1)
 	i := 0
 	j := 0
 	m := len(str1)
@@ -41,10 +52,10 @@ func kmp(str1 string, str2 string) []int {
 		i++
 		j++
 
-		fmt.Println(i, j)
+		//fmt.Println(i, j)
 		if i >= m {
 			ret = append(ret, j-i)
-			fmt.Println("find:", j, i)
+			//fmt.Println("find:", j, i)
 			i = next[i]
 		}
 	}
@@ -52,10 +63,10 @@ func kmp(str1 string, str2 string) []int {
 	return ret
 }
 
-func preKMP(x []byte) [30]int {
+func preKMP(x string) [MaxArraySize]int {
 	var i, j int
 	length := len(x) - 1
-	var kmpNext [30]int
+	var kmpNext [MaxArraySize]int
 	i = 0
 	j = -1
 	kmpNext[0] = -1
@@ -68,13 +79,11 @@ func preKMP(x []byte) [30]int {
 		i++
 		j++
 
-		// fmt.Println(i, j)
 		if x[i] == x[j] {
 			kmpNext[i] = kmpNext[j]
 		} else {
 			kmpNext[i] = j
 		}
-		// fmt.Println("2", i, j, length)
 	}
 	return kmpNext
 }

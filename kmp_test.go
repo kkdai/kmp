@@ -18,15 +18,38 @@
 
 package kmp
 
-import (
-	"fmt"
-	"testing"
-)
+import "testing"
 
 func TestPreKMP(t *testing.T) {
-	fmt.Println("next=>", preKMP([]byte("cocacola")))
-	fmt.Println("next=>", preKMP([]byte("gcagagag")))
+	ret := preKMP("cocacola")
+	if len(ret) > 5 && (ret[0] != -1 || ret[2] != -1 || ret[4] != -1) {
+		t.Error("PreKMP error:", ret)
+	}
+}
 
-	fmt.Println("kmp=>", kmp("co", "cocacola"))
-	fmt.Println("kmp=>", kmp("abcabc", "zjifeoabcabcjiefjie"))
+func TestKMP(t *testing.T) {
+	ret := KMP("co", "cocacola")
+	if len(ret) == 0 {
+		t.Error("No result on KMP")
+		return
+	}
+
+	if len(ret) != 2 && (ret[0] != 0 || ret[1] != 4) {
+		t.Error("Result is wrong on KMP 1st test:", ret)
+		return
+	}
+
+	if r2 := KMP("ABCDABD", "ABC ABCDAB ABCDABCDABDE"); r2[0] != 15 {
+		t.Error("wring on 2nd KMP test:", r2)
+	}
+}
+
+func TestStrstr(t *testing.T) {
+	if index := Strstr("hellow world", "low"); index != 3 {
+		t.Error("wrong on 1st Strstr test:", index)
+	}
+
+	if index := Strstr("ABC ABCDAB ABCDABCDABDE", "ABCDABD"); index != 15 {
+		t.Error("wring on 2nd Strstr test:", index)
+	}
 }
