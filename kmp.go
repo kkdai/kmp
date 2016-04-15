@@ -83,6 +83,25 @@ func KMP(want string, target string) []int {
 	return ret
 }
 
+func preMP(x string) [MaxArraySize]int {
+	var i, j int
+	length := len(x) - 1
+	var mpNext [MaxArraySize]int
+	i = 0
+	j = -1
+	mpNext[0] = -1
+
+	for i < length {
+		for j > -1 && x[i] != x[j] {
+			j = mpNext[j]
+		}
+		i++
+		j++
+		mpNext[i] = j
+	}
+	return mpNext
+}
+
 func preKMP(x string) [MaxArraySize]int {
 	var i, j int
 	length := len(x) - 1

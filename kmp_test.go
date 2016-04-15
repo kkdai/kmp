@@ -18,13 +18,28 @@
 
 package kmp
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestPreKMP(t *testing.T) {
 	ret := preKMP("cocacola")
 	if len(ret) > 5 && (ret[0] != -1 || ret[2] != -1 || ret[4] != -1) {
 		t.Error("PreKMP error:", ret)
 	}
+
+	fmt.Println("ORI= cocacola")
+	fmt.Println("MP=", preMP("cocacola"))
+	fmt.Println("KMP=", preKMP("cocacola"))
+
+	fmt.Println("ORI= ABCDABD")
+	fmt.Println("MP=", preMP("ABCDABD"))
+	fmt.Println("KMP=", preKMP("ABCDABD"))
+
+	fmt.Println("ORI= abcabcacab")
+	fmt.Println("MP=", preMP("abcabcacab"))
+	fmt.Println("KMP=", preKMP("abcabcacab"))
 }
 
 func TestKMP(t *testing.T) {
@@ -44,7 +59,11 @@ func TestKMP(t *testing.T) {
 	}
 
 	if r2 := KMP("ABCDABD", "ABC ABCDAB ABCDABCDABDE"); r2[0] != 15 {
-		t.Error("wring on 2nd KMP test:", r2)
+		t.Error("wrong on 2nd KMP test:", r2)
+	}
+
+	if r3 := KMP("ABCD", "ACBDA"); len(r3) != 0 {
+		t.Error("wrong on 3rd KMP", r3)
 	}
 }
 
@@ -54,7 +73,7 @@ func TestStrstr(t *testing.T) {
 	}
 
 	if index := Strstr("ABC ABCDAB ABCDABCDABDE", "ABCDABD"); index != 15 {
-		t.Error("wring on 2nd Strstr test:", index)
+		t.Error("wrong on 2nd Strstr test:", index)
 	}
 }
 
