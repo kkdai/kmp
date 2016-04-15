@@ -23,7 +23,7 @@ const (
 	MaxArraySize int = 100
 )
 
-//strrchr: Returns a pointer to the last occurrence of string in the  string str
+//Strchr :Returns a pointer to the last occurrence of string in the  string str
 func Strchr(target string, need string) int {
 	retSlice := KMP(need, target)
 	if len(retSlice) > 0 {
@@ -31,7 +31,6 @@ func Strchr(target string, need string) int {
 	}
 
 	return -1
-
 }
 
 //Strstr :Use kmp for strstr function
@@ -44,17 +43,27 @@ func Strstr(target string, need string) int {
 	return -1
 }
 
-//KMP Return index list if str1 contain str2
-func KMP(str1 string, str2 string) []int {
-	next := preKMP(str1)
+//KMP Return index list if target string contain want string
+func KMP(want string, target string) []int {
+	next := preKMP(want)
 	i := 0
 	j := 0
-	m := len(str1)
-	n := len(str2)
+	m := len(want)
+	n := len(target)
 
-	x := []byte(str1)
-	y := []byte(str2)
+	x := []byte(want)
+	y := []byte(target)
 	var ret []int
+
+	//got zero target or want, just return empty result
+	if m == 0 || n == 0 {
+		return ret
+	}
+
+	//want string bigger than target string
+	if n < m {
+		return ret
+	}
 
 	for j < n {
 		for i > -1 && x[i] != y[j] {

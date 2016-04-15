@@ -28,6 +28,10 @@ func TestPreKMP(t *testing.T) {
 }
 
 func TestKMP(t *testing.T) {
+	if ret := KMP("cococp", "co"); len(ret) != 0 {
+		t.Error("Input error detect failed")
+	}
+
 	ret := KMP("co", "cocacola")
 	if len(ret) == 0 {
 		t.Error("No result on KMP")
