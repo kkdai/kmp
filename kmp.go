@@ -24,8 +24,8 @@ const (
 )
 
 //Strchr :Returns a pointer to the last occurrence of string in the  string str
-func Strchr(target string, need string) int {
-	retSlice := KMP(need, target)
+func Strchr(haystack string, needle string) int {
+	retSlice := KMP(haystack, needle)
 	if len(retSlice) > 0 {
 		return retSlice[len(retSlice)-1]
 	}
@@ -34,8 +34,8 @@ func Strchr(target string, need string) int {
 }
 
 //Strstr :Use kmp for strstr function
-func Strstr(target string, need string) int {
-	retSlice := KMP(need, target)
+func Strstr(haystack string, needle string) int {
+	retSlice := KMP(haystack, needle)
 	if len(retSlice) > 0 {
 		return retSlice[0]
 	}
@@ -44,15 +44,15 @@ func Strstr(target string, need string) int {
 }
 
 //KMP Return index list if target string contain want string
-func KMP(want string, target string) []int {
-	next := preKMP(want)
+func KMP(haystack string, needle string) []int {
+	next := preKMP(needle)
 	i := 0
 	j := 0
-	m := len(want)
-	n := len(target)
+	m := len(needle)
+	n := len(haystack)
 
-	x := []byte(want)
-	y := []byte(target)
+	x := []byte(needle)
+	y := []byte(haystack)
 	var ret []int
 
 	//got zero target or want, just return empty result

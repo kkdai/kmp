@@ -43,11 +43,11 @@ func TestPreKMP(t *testing.T) {
 }
 
 func TestKMP(t *testing.T) {
-	if ret := KMP("cococp", "co"); len(ret) != 0 {
+	if ret := KMP("co", "cococp"); len(ret) != 0 {
 		t.Error("Input error detect failed")
 	}
 
-	ret := KMP("co", "cocacola")
+	ret := KMP("cocacola", "co")
 	if len(ret) == 0 {
 		t.Error("No result on KMP")
 		return
@@ -58,11 +58,11 @@ func TestKMP(t *testing.T) {
 		return
 	}
 
-	if r2 := KMP("ABCDABD", "ABC ABCDAB ABCDABCDABDE"); r2[0] != 15 {
+	if r2 := KMP("ABC ABCDAB ABCDABCDABDE", "ABCDABD"); len(r2) > 0 && r2[0] != 15 {
 		t.Error("wrong on 2nd KMP test:", r2)
 	}
 
-	if r3 := KMP("ABCD", "ACBDA"); len(r3) != 0 {
+	if r3 := KMP("ACBDA", "ABCD"); len(r3) != 0 {
 		t.Error("wrong on 3rd KMP", r3)
 	}
 }
